@@ -1,91 +1,101 @@
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import Carousel from '@/components/Carousel'
+import CategoryCard from '@/components/categoryCard'
+import NewCard from '@/components/newCard'
 
-const inter = Inter({ subsets: ['latin'] })
+const pruebaCarrousel = [
+  {
+    nombre: 'categoria 1',
+    imagen: '/images.jpeg',
+    cantidad: 10
+  },
+  {
+    nombre: 'categoria 2',
+    imagen: '/images.jpeg',
+    cantidad: 10
+  },
+  {
+    nombre: 'categoria 3',
+    imagen: '/images.jpeg',
+    cantidad: 10
+  },
+  {
+    nombre: 'categoria 4',
+    imagen: '/images.jpeg',
+    cantidad: 10
+  },
+  {
+    nombre: 'categoria 5',
+    imagen: '/images.jpeg',
+    cantidad: 10
+  },
+  {
+    nombre: 'categoria 6',
+    imagen: '/images.jpeg',
+    cantidad: 10
+  },
+]
+
+const pruebaNuevos = pruebaCarrousel.map((item) => {
+  return {
+    nombre: item.nombre,
+    imagen: item.imagen,
+    precio: 10000
+  }
+})
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+    {/* La parte linda */}
+    <section className=' w-full  flex flex-col items-center'>
+
+      <div className='w-3/4 h-96 flex  justify-between mt-20'>
+          {/* Datos de la empresa */}
+        <article className='w-1/2 flex flex-col h-full  justify-center items-start gap-5'>
+
+        <h1 className='text-primary font-semibold text-5xl' >NOMAT</h1>
+        <h1>Slogan de la empresa o descricion pequeña</h1>
+        <div className='w-3/4 h-0 border-b border-secondary border-2' ></div>
+        <span className='w-3/4 text-justify'>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam ab facilis obcaecati minima, est alias perspiciatis dicta suscipit, et libero consectetur. Enim dolor vel molestiae aperiam doloremque veniam praesentium odit?
+        </span>
+
+        <button className='bg-primary rounded-2xl p-2 w-24 text-secondary' >
+          Tienda
+        </button>
+
+        </article>
+        {/* Imagen random */}
+
+        <article className='w-1/2 h-full flex justify-center items-center' >
+          <Image src='/images.jpeg' alt='logo' width={300} height={300} />
+        </article>
+
       </div>
+      {/* carrusel de categorias */}
+      <section className='w-3/4 flex flex-col gap-5 mb-10' >
+        <h1 className='text-secondary font-semibold text-2xl mb-2' >Categorias</h1>
+        <div className='w-full h-0 border-b border-secondary border-2'></div>
+        <Carousel>
+          {pruebaCarrousel.map((categoria, index) => (
+            <CategoryCard key={index} data={categoria} />
+          ))}
+        </Carousel>
+      </section>
+      
+      <section className='w-3/4 flex flex-col gap-5 mb-20' >
+        <h1 className='text-secondary font-semibold text-2xl mb-2' >¡Lo mas nuevo!</h1>
+        <div className='w-full h-0 border-b border-secondary border-2'></div>
+        <Carousel>
+          {pruebaNuevos.map((categoria, index) => (
+            <NewCard key={index} data={categoria} />
+          ))}
+        </Carousel>
+      </section>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
+    </section>
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   )
 }
