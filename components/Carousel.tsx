@@ -36,7 +36,7 @@ const Carrusel = ({children}:{
                 Array.from({length: numofSlides}, (_, i) => {
 
                   return (
-                    <div className="w-1/4 flex justify-center items-center" >
+                    <div key={i} className="w-1/4 flex justify-center items-center" >
                       {children[newIndex(index, len, i)]}
                     </div>
                   )
@@ -49,7 +49,7 @@ const Carrusel = ({children}:{
 
       <section className="w-full flex gap-2 justify-center">
         {
-          children.map((_, i) => i===index ? <Dot active={true} /> : <Dot active={false} />)
+          children.map((_, i) => i===index ? <Dot active={true} key={i} /> : <Dot active={false} key={i} />)
         }
       </section>
 
