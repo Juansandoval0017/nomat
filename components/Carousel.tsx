@@ -18,17 +18,35 @@ const Carrusel = ({children}:{
 }) => {
 
    const [index, setIndex] = useState(0);
-   const [inTransition, setInTransition] = useState(false);
-   const [outTransition, setOutTransition] = useState(false);
+   const [transition, setTransition] = useState(false);
    const len = children.length;
    const numofSlides = 4;
   
    const handlePrev = () => {
-    setIndex(newIndex(index, len, -1));
+    setTransition(true);
+    setTimeout(() => {
+      setTransition(false);
+      setIndex(newIndex(index, len, -1));
+    }, 500);
+    
    }
 
     const handleNext = () => {
-    setIndex(newIndex(index, len, 1));
+      setTransition(true);
+      setTimeout(() => {
+        setTransition(false);
+        setIndex(newIndex(index, len, 1));
+      }, 500);
+    
+    }
+
+    const handleDot = (i: number) => {
+      setTransition(true);
+      setTimeout(() => {
+        setTransition(false);
+        
+      }, 1000);
+      setIndex(i);
     }
   
 
@@ -43,7 +61,7 @@ const Carrusel = ({children}:{
                 {"<"}
          
         </button>
-        <article className="w-11/12 flex justify-between" >
+        <article className={transition?"w-11/12 flex justify-between animate-pulse":"w-11/12 flex justify-between"} >
             
             {
                 Array.from({length: numofSlides}, (_, i) => {
@@ -68,7 +86,9 @@ const Carrusel = ({children}:{
 
       <section className="w-full flex gap-2 justify-center">
         {
-          children.map((_, i) => i===index ? <Dot active={true} key={i} /> : <Dot active={false} key={i} />)
+          children.map((_, i) => i===index ? <Dot active={true} key={i} /> : <Dot active={false} key={i} onClick={
+            () => handleDot(i)
+          } />)
         }
       </section>
 

@@ -8,7 +8,7 @@ export default function CategoryCard({data}: {
     }
 }) {
   return (
-    <div className='flex flex-col items-start justify-start gap-2 border-2 p-4 shadow-xl rounded-md' >
+    <div className='flex flex-col items-start justify-start gap-2 border-2 p-4 shadow-xl rounded-md cursor-pointer'>
         <div className='w-32 h-32  flex justify-center items-center' >
             <img src={data.imagen} alt={data.nombre} className='w-full h-full object-contain' />
         </div>
