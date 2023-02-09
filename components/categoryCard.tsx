@@ -13,7 +13,7 @@ export default function CategoryCard({data}: {
             <img src={data.imagen} alt={data.nombre} className='w-full h-full object-contain' />
         </div>
         <div className='w-full h-1/2 flex flex-col justify-center items-center' >
-            <h3 className='text-xl font-bold' >{data.nombre}  <span className='text-slate-400' >({data.cantidad})</span>  </h3>
+            <h3 className='text-xl font-bold' >{data.nombre}  <span className='text-slate-400 text-sm' >({data.cantidad})</span>  </h3>
             
         </div>
     </div>

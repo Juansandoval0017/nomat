@@ -14,7 +14,7 @@ export default function CategoryCard({data}: {
         </div>
         <div className='w-full h-1/2 flex flex-col justify-center items-center gap-2' >
             <h3 className='text-xl font-bold text-secondary'>{data.nombre}</h3>
-            <h3 className='text-xl font-bold'>
+            <h3 className='text-lg font-bold'>
                 <span className='text-secondary' >${data.precio.toLocaleString()} <span className='text-primary' >COP</span></span>
             </h3>
             

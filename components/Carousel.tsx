@@ -23,13 +23,26 @@ const Carrusel = ({children}:{
    const len = children.length;
    const numofSlides = 4;
   
+   const handlePrev = () => {
+    setIndex(newIndex(index, len, -1));
+   }
+
+    const handleNext = () => {
+    setIndex(newIndex(index, len, 1));
+    }
   
 
 
    return (
     <div className="w-full flex flex-col" >
      <section className="w-full flex justify-between items-center mb-10" >
-        <span>{"<"}</span>
+        <button className=" h-6 w-6 rounded-full text-xl  flex justify-center items-center text-secondary font-bold" 
+        onClick={handlePrev}
+        >
+     
+                {"<"}
+         
+        </button>
         <article className="w-11/12 flex justify-between" >
             
             {
@@ -44,7 +57,13 @@ const Carrusel = ({children}:{
             }
 
         </article>
-        <span>{">"}</span>
+        <button className=" h-6 w-6 rounded-full text-xl  flex justify-center items-center text-secondary font-bold"
+        onClick={handleNext}
+        >
+          
+                {">"}
+         
+        </button>
      </section>
 
       <section className="w-full flex gap-2 justify-center">
