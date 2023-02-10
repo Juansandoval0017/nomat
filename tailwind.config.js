@@ -12,6 +12,9 @@ module.exports = {
         secondary: "#030128",
         tertiary: "#00337C",
       },
+      height:{
+        120: "30rem",
+      }
     },
   },
   plugins: [],

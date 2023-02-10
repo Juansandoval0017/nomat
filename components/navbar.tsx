@@ -1,7 +1,10 @@
 'use client'
 import Image from "next/image"
+import { useState } from "react"
+import NavLink from "./navLink"
  const Navbar = () => {
 
+    const [active, setActive] = useState(1)
 
     return (
         <nav className="w-full flex justify-around items-center p-5  bg-secondary">
@@ -12,15 +15,12 @@ import Image from "next/image"
 
 
             <div className="w-1/4 flex justify-between text-white text-lg">
-                <span className="text-primary" >
-                    Inicio
-                </span>
-                <span>
-                    Productos
-                </span>
-                <span>
-                    Rastreo
-                </span>
+
+                <NavLink active={active} setActive={setActive} id={1} path="/" text="Inicio" />
+                <NavLink active={active} setActive={setActive} id={2} path="/Productos" text="Productos" />
+                <NavLink active={active} setActive={setActive} id={3} path="/Rastreo" text="Rastreo" />
+                
+                
             </div>
 
 
