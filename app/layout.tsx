@@ -6,6 +6,8 @@ import Twitter from '@/components/TwitterIcon'
 import Container from '@/components/IconContainer'
 import Foot from './Foot'
 import WhatsAppButton from './WppButton'
+import CartButton from './CartButton'
+import InicioSession from '@/components/InicioSession'
 
 export default function RootLayout({
   children,
@@ -22,9 +24,12 @@ export default function RootLayout({
       <body>
         <Navbar />
         <WhatsAppButton />
+        <CartButton />
         {children}
         
         <Foot />
+
+       
         
         </body>
     </html>

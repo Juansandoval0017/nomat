@@ -2,9 +2,12 @@
 import Image from "next/image"
 import { useState } from "react"
 import NavLink from "./navLink"
+import Link from 'next/link'
+
  const Navbar = () => {
 
     const [active, setActive] = useState(1)
+    const [session,setSession] = useState(false)
 
     return (
         <nav className="w-full flex justify-around items-center p-5  bg-secondary">
@@ -23,10 +26,28 @@ import NavLink from "./navLink"
                 
             </div>
 
-
-            <span className="underline text-primary text-lg ">
-                Mi cuenta
-            </span>
+            {
+                session ? 
+                <span className="underline text-primary text-lg ">
+                    Mi cuenta
+                </span> :
+                <div className="flex justify-around w-1/4">
+                    <button 
+                    className=" text-secondary text-lg bg-white pl-2 pr-2 pt-1 pb-1 rounded-md
+                    hover:bg-slate-200">
+                        <Link href="/login" >
+                            Iniciar sesión
+                        </Link>
+                    </button>
+                    <button className="text- text-lg bg-primary pl-2 pr-2 pt-1 pb-1 rounded-md
+                    hover:bg-green-600">
+                        <Link href="/register" >
+                        Registrarse
+                        </Link>
+                    </button>
+                </div>
+            }
+            
 
         </nav>
     )
