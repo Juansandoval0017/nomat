@@ -7,7 +7,8 @@ import Link from 'next/link'
  const Navbar = () => {
 
     const [active, setActive] = useState(1)
-    const [session,setSession] = useState(false)
+
+    const email = document.cookie.split("=")[1];
 
     return (
         <nav className="w-full flex justify-around items-center p-5  bg-secondary">
@@ -27,7 +28,7 @@ import Link from 'next/link'
             </div>
 
             {
-                session ? 
+                email ? 
                 <span className="underline text-primary text-lg ">
                     Mi cuenta
                 </span> :

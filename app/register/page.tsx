@@ -8,11 +8,11 @@ export default function page() {
             <div className="flex flex-col gap-5 items-center justify-center w-1/3 bg-white rounded-2xl ">
                 <h1 className="text-3xl font-bold text-secondary">Registrarse</h1>
                 <form className="flex flex-col items-center justify-center w-full  gap-8 ">
-                    <InputForm  type="text" texto="Nombre Completo" />
-                    <InputForm  type="text" texto="Correo Electronico" />
-                    <InputForm  type="text" texto="Contraseña" />
-                    <InputForm  type="text" texto="Confirmar Contraseña" />
-                    <InputForm type="text" texto="Celular" />
+                    <InputForm  type="text" texto="Nombre Completo" name="name" />
+                    <InputForm  type="text" texto="Correo Electronico" name="email" />
+                    <InputForm  type="text" texto="Contraseña" name="password" />
+                    <InputForm  type="text" texto="Confirmar Contraseña" name="confirmPassword" />
+                    <InputForm type="text" texto="Celular" name="phone" />
 
 
                     <Link href="/login" className='text-primary underline' >Ya tengo una cuenta</Link>

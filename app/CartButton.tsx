@@ -1,7 +1,15 @@
+'use client'
 import React from 'react';
 import CartIcon from '@/components/CartIcon';
 const WhatsAppButton = () => {
   const WhatsAppLink = "https://wa.me/+573057223586";
+  //get email cookie from login page
+  const email = document.cookie.split("=")[1];
+  
+
+  if(!email){
+    return null;
+  }
 
   return (
     <a href="https://wa.me/TU NUMERO DETELEFONO"
