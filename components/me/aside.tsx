@@ -8,7 +8,7 @@ const styles = {
   inactive: "border-r border-secondary p-2 border  border-b-0 cursor-pointer",
 };
 
-export default function aside() {
+export default function Aside() {
   const [active, setActive] = useState(1);
 
   const handleClick = (value: number) => {
