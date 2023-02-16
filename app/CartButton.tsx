@@ -2,9 +2,9 @@
 import React from 'react';
 import CartIcon from '@/components/Icons/CartIcon';
 const WhatsAppButton = () => {
-  const WhatsAppLink = "https://wa.me/+573057223586";
+  
   //get email cookie from login page
-  const email = document.cookie.split("=")[1];
+  const email = localStorage.getItem('email');
   
 
   if(!email){

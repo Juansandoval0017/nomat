@@ -8,7 +8,7 @@ import Link from 'next/link'
 
     const [active, setActive] = useState(1)
 
-    const email = document.cookie.split("=")[1];
+    const email = localStorage.getItem('email')
 
     return (
         <nav className="w-full flex justify-around items-center p-5  bg-secondary">

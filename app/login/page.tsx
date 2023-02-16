@@ -7,9 +7,9 @@ export default function page() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
   
-    //colocar el correo como cookie
+    //colocar el correo en localstorage
     const { email } = e.currentTarget
-    document.cookie = `email=${email.value}`
+    localStorage.setItem('email', email.value)
     //redireccionar a la pagina de inicio
     window.location.href = '/'
     
