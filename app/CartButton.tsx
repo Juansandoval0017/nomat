@@ -1,10 +1,15 @@
 'use client'
-import React from 'react';
+import React , {useEffect,useState} from 'react';
 import CartIcon from '@/components/Icons/CartIcon';
 const WhatsAppButton = () => {
   
   //get email cookie from login page
-  const email = localStorage.getItem('email');
+  
+  const [email,setEmail] = useState<string>("")
+
+    useEffect(() => {
+        setEmail(localStorage.getItem('email') || "")
+    }, [])
   
 
   if(!email){
