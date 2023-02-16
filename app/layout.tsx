@@ -1,13 +1,13 @@
 import './globals.css'
-import Navbar from '@/components/navbar'
-import Instagram from '@/components/InstagramIcon'
-import Faceboock from '@/components/FaceboockIcon'
-import Twitter from '@/components/TwitterIcon'
-import Container from '@/components/IconContainer'
+import Navbar from '@/components/common/navbar'
+import Instagram from '@/components/Icons/InstagramIcon'
+import Faceboock from '@/components/Icons/FaceboockIcon'
+import Twitter from '@/components/Icons/TwitterIcon'
+import Container from '@/components/Icons/IconContainer'
 import Foot from './Foot'
 import WhatsAppButton from './WppButton'
 import CartButton from './CartButton'
-import InicioSession from '@/components/InicioSession'
+import InicioSession from '@/components/common/InicioSession'
 
 export default function RootLayout({
   children,

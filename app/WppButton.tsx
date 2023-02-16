@@ -1,5 +1,5 @@
 import React from 'react';
-import WhatsAppIcon from '@/components/WppIcon';
+import WhatsAppIcon from '@/components/Icons/WppIcon';
 const WhatsAppButton = () => {
   const WhatsAppLink = "https://wa.me/+573057223586";
 

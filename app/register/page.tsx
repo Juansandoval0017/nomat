@@ -1,5 +1,5 @@
 import React from 'react'
-import InputForm from '@/components/FormInput'
+import InputForm from '@/components/common/FormInput'
 import Link from 'next/link'
 export default function page() {
   

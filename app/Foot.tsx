@@ -1,8 +1,8 @@
-import Container from '@/components/IconContainer'
+import Container from '@/components/Icons/IconContainer'
 import React from 'react'
-import Faceboock from '@/components/FaceboockIcon'
-import Instagram from '@/components/InstagramIcon'
-import Twitter from '@/components/TwitterIcon'
+import Faceboock from '@/components/Icons/FaceboockIcon'
+import Instagram from '@/components/Icons/InstagramIcon'
+import Twitter from '@/components/Icons/TwitterIcon'
 
 export default function Foot() {
   return (

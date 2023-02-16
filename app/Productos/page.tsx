@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react'
 import InfiniteScroll from "react-infinite-scroll-component";
 import ListaDesplegable from '@/components/Productos/ListaDesplegable'
 import Range from '@/components/Productos/Range'
-import SearchIcon from '@/components/SearchIcon'
+import SearchIcon from '@/components/Icons/SearchIcon'
 import CardProduct from '@/components/Productos/CardProduct'
 
 const fakeApi = async () => {

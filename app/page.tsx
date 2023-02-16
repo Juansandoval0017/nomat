@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Carousel from '@/components/Carousel'
-import CategoryCard from '@/components/categoryCard'
-import NewCard from '@/components/newCard'
+import Carousel from '@/components/main_page/Carousel'
+import CategoryCard from '@/components/main_page/categoryCard'
+import NewCard from '@/components/main_page/newCard'
 
 const pruebaCarrousel = [
   {

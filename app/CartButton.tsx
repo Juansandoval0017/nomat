@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import CartIcon from '@/components/CartIcon';
+import CartIcon from '@/components/Icons/CartIcon';
 const WhatsAppButton = () => {
   const WhatsAppLink = "https://wa.me/+573057223586";
   //get email cookie from login page

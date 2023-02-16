@@ -1,6 +1,6 @@
 import React from 'react'
 import InfoLabel from '@/components/me/InfoLabel'
-import FormInput from '@/components/FormInput'
+import FormInput from '@/components/common/FormInput'
 export default function page() {
   return (
     <div className='w-full justify-between flex p-5 items-center' >
@@ -19,7 +19,12 @@ export default function page() {
             
             <FormInput type="text" texto="Contraseña Actual" name="oldPassword" />
             <FormInput type="text" texto="Nueva Contraseña" name="newPassword" />
-            <button  className='bg-primary w-3/4 self-center text-secondary p-2 mt-5 rounded-md border-secondary border-2' >Cambiar contraseña</button>
+            <button  
+            className='bg-primary w-3/4 self-center text-secondary 
+            p-2 mt-5 rounded-md
+            border-secondary border-2
+            hover:bg-green-400
+            ' >Cambiar contraseña</button>
         </section>
 
     </div>
