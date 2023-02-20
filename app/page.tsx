@@ -2,60 +2,39 @@ import Image from 'next/image'
 import Carousel from '@/components/main_page/Carousel'
 import CategoryCard from '@/components/main_page/categoryCard'
 import NewCard from '@/components/main_page/newCard'
-import { Categorias } from '@/additional'
+import { Categorias, NuevosProductos } from '@/additional'
 
-const pruebaCarrousel = [
-  {
-    nombre: 'categoria 1',
-    imagen: '/images.jpeg',
-    cantidad: 10
-  },
-  {
-    nombre: 'categoria 2',
-    imagen: '/images.jpeg',
-    cantidad: 10
-  },
-  {
-    nombre: 'categoria 3',
-    imagen: '/images.jpeg',
-    cantidad: 10
-  },
-  {
-    nombre: 'categoria 4',
-    imagen: '/images.jpeg',
-    cantidad: 10
-  },
-  {
-    nombre: 'categoria 5',
-    imagen: '/images.jpeg',
-    cantidad: 10
-  },
-  {
-    nombre: 'categoria 6',
-    imagen: '/images.jpeg',
-    cantidad: 10
-  },
-]
 
-const pruebaNuevos = pruebaCarrousel.map((item) => {
-  return {
-    nombre: item.nombre,
-    imagen: item.imagen,
-    precio: 10000
-  }
-})
+
+
 
 const getData = async () => {
     const categorias = await fetch(`${process.env.HOST}/api/categorias`,{
-      cache: 'no-store',
+      next:{
+        revalidate: 120
+      }
     })
-    return await categorias.json()
+    const nuevos = await fetch(`${process.env.HOST}/api/nuevosProductos`,{
+      next:{
+        revalidate: 120
+      }
+    })
+
+    const returnCategorias = await categorias.json()
+    const returnNuevos = await nuevos.json()
+    return {
+      categorias: returnCategorias,
+      nuevos: returnNuevos
+    } as {
+      categorias: Categorias[],
+      nuevos: NuevosProductos[]
+    }
 
 }
 
 export default async function Home() {
 
-  const categorias: Categorias[] = await getData()
+  const {categorias, nuevos} = await getData()
   return (
     <>
     {/* La parte linda */}
@@ -94,12 +73,12 @@ export default async function Home() {
           ))}
         </Carousel>
       </section>
-      
+      {/* carrusel de los productos nuevos */}
       <section className='w-3/4 flex flex-col gap-5 mb-20' >
         <h1 className='text-secondary font-semibold text-2xl mb-2' >¡Lo mas nuevo!</h1>
         <div className='w-full h-0 border-b border-secondary border-2'></div>
         <Carousel>
-          {pruebaNuevos.map((categoria, index) => (
+          {nuevos.map((categoria, index) => (
             <NewCard key={index} data={categoria} />
           ))}
         </Carousel>

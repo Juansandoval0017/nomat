@@ -16,7 +16,7 @@ export default async  function handler(
   const actualDateStamp = new Date().getTime()
   const KeyDateStamp = new Date(key.expires).getTime()
   const  token =  actualDateStamp > KeyDateStamp ? await NewToken() : key.token
-
+  console.log("Realizando peticion a la api...")
   const categorias = await axios.post('/api/Webapi/Ver_Categoria'
                                       ,{},{
                                         baseURL: process.env.API_URL,
@@ -27,7 +27,7 @@ export default async  function handler(
                                       })
 
    
-
+              
 
 
   res.status(200).json(categorias.data)
