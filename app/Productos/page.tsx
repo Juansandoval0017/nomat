@@ -16,7 +16,7 @@ const fakeApi = async () => {
 
 export default function page() {
 
-  const [productos, setProductos] = useState([0,0,0,0,0,0,0,0])
+  const [productos, setProductos] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
   const fetchMoreData = async () => {
     const newProductos = await fakeApi()
@@ -25,11 +25,11 @@ export default function page() {
   
 
   return (
-    <div className='w-full h-screen  flex justify-center items-center text-secondary mb-20'>
+    <div className='w-full   flex justify-center items-center text-secondary mb-20'>
       
-      <section className='w-10/12 flex gap-10 mt-10 h-full justify-center items-center'>
+      <section className='w-10/12 flex gap-10 mt-10 h-full justify-center items-start'>
 
-        <article className='w-1/4 flex flex-col gap-5'>
+        <article className='w-1/4 flex flex-col gap-5   '>
 
           <div className='flex gap-2 items-center border-2 border-secondary p-1 '>
             <span className='w-5 h-5'>
@@ -84,7 +84,7 @@ export default function page() {
 
         </article>
 
-        <article id='scrollableDiv' className='w-full h-120 overflow-x-auto overflow-y-scroll'>
+        <article id='scrollableDiv' className='w-full h-180 overflow-x-auto overflow-y-scroll'>
           <InfiniteScroll
             dataLength={productos.length}
             next={fetchMoreData}
@@ -92,6 +92,7 @@ export default function page() {
             loader={<h4>Loading...</h4>}
             className=' w-full grid grid-cols-4 gap-y-5'
             scrollableTarget="scrollableDiv"
+            scrollThreshold={0.99}
           >
             {productos.map((producto, index) => (
               <CardProduct key={index} />

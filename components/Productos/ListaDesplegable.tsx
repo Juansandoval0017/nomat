@@ -1,9 +1,30 @@
-import React from 'react'
+'use client'
+import React, {useState} from 'react'
+const data = [
+    "Campo 1",
+    "Campo 2",
+    "Campo 3",
+    "Campo 4",
+    "Campo 5",
+    "Campo 6",
+    "Campo 7",
+    "Campo 8",
+    "Campo 9",
+    "Campo 10",
+]
+
+
+const styles = {
+    open: 'w-full flex flex-col gap-2 p-2 max-h-120 transition-all duration-500 ease-in-out overflow-y-auto',
+    close: 'w-full flex flex-col gap-2 p-2 hidden max-h-0 transition-all duration-500 ease-in-out overflow-y-auto'
+}
 
 export default function ListaDesplegable() {
+
+    const [open, setOpen] = useState(false)
   return (
-    <div className='w-full flex flex-col' >
-        <section className='w-full flex justify-between' >
+    <div className='w-full flex flex-col border border-secondary' >
+        <section className='w-full flex justify-between items-center p-1 cursor-pointer relative' onClick={()=> setOpen(!open) } >
             <span>
                 Campo
             </span>
@@ -17,6 +38,19 @@ export default function ListaDesplegable() {
 
             </article>
 
+        </section>
+
+        <section className= {  open? styles["open"] : styles["close"]  } >
+            {
+                data.map((item, index) => {
+                    return (
+                        <label className='flex gap-2' key={index} >
+                            <input type="checkbox" name='orden' value={index} className=' accent-violet-900' />
+                            <span  >{item}</span>
+                        </label>
+                    )
+                })
+            }
         </section>
     </div>
   )

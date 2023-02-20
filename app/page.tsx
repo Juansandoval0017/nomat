@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Carousel from '@/components/main_page/Carousel'
 import CategoryCard from '@/components/main_page/categoryCard'
 import NewCard from '@/components/main_page/newCard'
+import { Categorias } from '@/additional'
 
 const pruebaCarrousel = [
   {
@@ -44,7 +45,15 @@ const pruebaNuevos = pruebaCarrousel.map((item) => {
   }
 })
 
-export default function Home() {
+const getData = async () => {
+    const categorias = await fetch(`${process.env.HOST}/api/categorias`)
+    return await categorias.json()
+
+}
+
+export default async function Home() {
+
+  const categorias: Categorias[] = await getData()
   return (
     <>
     {/* La parte linda */}
@@ -78,7 +87,7 @@ export default function Home() {
         <h1 className='text-secondary font-semibold text-2xl mb-2' >Categorias</h1>
         <div className='w-full h-0 border-b border-secondary border-2'></div>
         <Carousel>
-          {pruebaCarrousel.map((categoria, index) => (
+          {categorias.map((categoria, index) => (
             <CategoryCard key={index} data={categoria} />
           ))}
         </Carousel>
