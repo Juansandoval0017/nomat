@@ -46,7 +46,9 @@ const pruebaNuevos = pruebaCarrousel.map((item) => {
 })
 
 const getData = async () => {
-    const categorias = await fetch(`${process.env.HOST}/api/categorias`)
+    const categorias = await fetch(`${process.env.HOST}/api/categorias`,{
+      cache: 'no-store',
+    })
     return await categorias.json()
 
 }
