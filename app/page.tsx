@@ -10,10 +10,14 @@ import { Categorias, NuevosProductos } from '@/additional'
 
 const getData = async () => {
     const categorias = await fetch(`${process.env.HOST}/api/categorias`,{
-      cache: "no-store"
+      next:{
+        revalidate: 120
+      }
     })
     const nuevos = await fetch(`${process.env.HOST}/api/nuevosProductos`,{
-      cache: "no-store"
+      next:{
+        revalidate: 120
+      }
     })
 
     const returnCategorias = await categorias.json()
