@@ -30,10 +30,10 @@ export default async  function handler(
                                       })
 
    const catalogo: Catalogo = productos.data
-  //slice 20 productos
+  
 
   console.log("Realizando peticion a la api y separando productos...")
-  const listaProductos = catalogo.listaproductos.slice(0,20).map((producto) => {
+  const listaProductos = catalogo.listaproductos.map((producto) => {
     return {
       name: producto.Name,
       precio: producto.precio,
@@ -42,6 +42,8 @@ export default async  function handler(
       partNum: producto.PartNum,
     }
   })
+
+
 
 
 

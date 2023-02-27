@@ -76,6 +76,20 @@ export type NuevosProductos = {
 	precio: number,
 	slug: string,
 	image: string,
-
+	partNum: string,
 
 }
+
+export type Caracteristicas = {
+	AttributeName: string,
+	AttributeValue: string,
+}
+
+export type Atributos = {
+   ListaAtributos: {
+	Atributos: {
+		attributecs: Caracteristicas[]
+	}
+   }
+}
+

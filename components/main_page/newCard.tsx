@@ -1,11 +1,11 @@
 import { NuevosProductos } from '@/additional'
 import React from 'react'
-
+import Link from 'next/link'
 export default function CategoryCard({data}: {
     data: NuevosProductos
 }) {
   return (
-    <div className='flex flex-col items-start justify-start gap-2 border-2 p-4 shadow-xl rounded-md w-3/4 h-64 overflow-hidden' >
+    <Link href={`producto/${data.partNum}`} className='cursor-pointer flex flex-col items-center justify-center gap-2 border-2 p-4 shadow-xl rounded-md w-3/4 h-64 overflow-hidden' >
         <div className='w-32 h-32  flex justify-center items-center' >
             <img src={data.image} alt={data.name} className='w-full h-full object-contain' />
         </div>
@@ -19,6 +19,6 @@ export default function CategoryCard({data}: {
             
         </div>
         
-    </div>
+    </Link>
   )
 }

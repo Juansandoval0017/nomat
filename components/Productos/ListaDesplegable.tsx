@@ -1,4 +1,5 @@
 'use client'
+import { Categorias } from '@/additional'
 import React, {useState} from 'react'
 const data = [
     "Campo 1",
@@ -19,14 +20,14 @@ const styles = {
     close: 'w-full flex flex-col gap-2 p-2 hidden max-h-0 transition-all duration-500 ease-in-out overflow-y-auto'
 }
 
-export default function ListaDesplegable() {
+export default function ListaDesplegable({data} : {data: Categorias[]}) {
 
     const [open, setOpen] = useState(false)
   return (
     <div className='w-full flex flex-col border border-secondary' >
         <section className='w-full flex justify-between items-center p-1 cursor-pointer relative' onClick={()=> setOpen(!open) } >
             <span>
-                Campo
+                Categorias
             </span>
             
             { /* flecha desplegable */}
@@ -46,7 +47,7 @@ export default function ListaDesplegable() {
                     return (
                         <label className='flex gap-2' key={index} >
                             <input type="checkbox" name='orden' value={index} className=' accent-violet-900' />
-                            <span  >{item}</span>
+                            <span  >{item.Categoria}</span>
                         </label>
                     )
                 })
