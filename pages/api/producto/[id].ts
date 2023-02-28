@@ -17,6 +17,8 @@ export default async function handler(
   //get the last part of the url
   const id = req.url?.split("/").pop()
 
+  console.log(id)
+
   const actualDateStamp = new Date().getTime()
   const KeyDateStamp = new Date(key.expires).getTime()
   const  token =  actualDateStamp > KeyDateStamp ? await NewToken() : key.token

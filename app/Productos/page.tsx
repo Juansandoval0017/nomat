@@ -4,24 +4,39 @@ import Content from './Content'
 
 
 const getData = async () => {
-  const res = await fetch(`${process.env.HOST}/api/productos`,{
-    cache: 'no-store',
-  })
+  
+  try{
+    const res = await fetch(`${process.env.HOST}/api/productos`,{
+      cache: 'no-store',
+      next: {
+        revalidate: 0
+      }
+    })
+  
+    const categorias = await fetch(`${process.env.HOST}/api/categorias`,{cache: 'no-store',next: {revalidate: 0}})
+  
+    const data = await res.json()
+  
+    const categoriasData = await categorias.json()
+  
+    return {
+      productos: data ? data : [],
+      categorias: categoriasData ? categoriasData : []
+    } as {
+      productos: NuevosProductos[],
+      categorias: Categorias[]
+  
+  }
+  }
+  catch(err){
+    console.log(err)
+    return{
+      productos: [],
+      categorias: []
 
-  const categorias = await fetch(`${process.env.HOST}/api/categorias`,{cache: 'no-store'})
+    } 
+  }
 
-  const data = await res.json()
-
-  const categoriasData = await categorias.json()
-
-  return {
-    productos: data ? data : [],
-    categorias: categoriasData ? categoriasData : []
-  } as {
-    productos: NuevosProductos[],
-    categorias: Categorias[]
-
-}
 }
 
 
