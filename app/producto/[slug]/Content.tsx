@@ -1,15 +1,18 @@
 'use client'
 import { Atributos, Caracteristicas, Producto } from '@/additional'
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import {useRouter} from 'next/navigation'
 import Imagenes from '@/components/producto/Imagenes'
 import Tabla from '@/components/producto/Tabla'
+import CartContext from '@/context/CartContext'
+import Panel from '@/components/producto/Panel'
 
 export default function Content({data}: {data: Producto}) {
 
   const router = useRouter()
   const [index, setIndex] = useState(0)
-
+  
+  const {open} = useContext(CartContext)
 
   const _atributos : Atributos = JSON.parse(data.xmlAttributes)
   const atributos : Caracteristicas[]  = _atributos.ListaAtributos.Atributos.attributecs
@@ -19,6 +22,8 @@ export default function Content({data}: {data: Producto}) {
       router.push('/404')
     }
   }, [data])
+
+
 
 
   return (
@@ -36,20 +41,7 @@ export default function Content({data}: {data: Producto}) {
       
       </section>
 
-      <section className='w-2/6  '>
-        <div className='w-2/6 top-1/4  fixed border-secondary border-2 p-10 flex flex-col ' >
-          <h1 className='text-4xl font-bold'>{data.Name}</h1>
-          <h2 className='text-3xl font-bold mt-10'>${data.precio.toLocaleString()}
-          <span className='text-primary' > COP</span>
-          </h2>
-
-          {/* boton de comprar */}
-          <button className='w-2/4 bg-primary text-white p-2 mt-10 rounded-md self-center' >Comprar</button>
-          {/* boton de agregar al carrito */}
-          <button className='w-2/4 bg-secondary text-white p-2 mt-10 rounded-md self-center' >Agregar al carrito</button>
-
-        </div>
-      </section>
+      {!open && <Panel data={data} />}
 
 
 

@@ -93,3 +93,7 @@ export type Atributos = {
    }
 }
 
+export interface Carrito extends NuevosProductos { 
+	quantity: number
+}
+
