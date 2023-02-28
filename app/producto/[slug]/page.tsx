@@ -2,7 +2,7 @@ import { Producto } from '@/additional'
 import React from 'react'
 import Content from './Content'
 
-export const dynamic = 'force-dynamic'
+
 
 const getData = async (numPart : string) => {
 
